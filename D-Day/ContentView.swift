@@ -14,6 +14,21 @@ struct Memo {
     var id: UUID = UUID()
     var title: String
     var endDate: Date
+    func getDDayString() -> String{
+        let offsetComps = Calendar.current.dateComponents([.day], from: endDate, to: Date())
+        guard let day = offsetComps.day
+        else { return "error" }
+        
+        if day > 0 {
+            return "D+\(day)"
+        } else if day == 0 {
+            return "D-Day"
+        } else {
+            return "D-\(day)"
+        }
+        
+//        return " "
+    }
 }
 
 
